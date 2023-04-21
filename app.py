@@ -7,11 +7,8 @@ from flask_session import Session
 from flask_mail import Mail, Message
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
-from waitress import serve
 
 import requests
-
-serve(wsgiapp)
 
 
 # Configure application
