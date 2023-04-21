@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/accounts" method="post">
+        <div class="accounts-text">
+            <h3>Choose one</h3>
+            <p>Update Username</p>
+            <a href="username.html"></a>
+                <button class="btn" id="btn" type="submit">Username</button>
+            </a>
+            <p>Update Password</p>
+            <a href="password.html"></a>
+                <button class="btn" id="btn" type="submit">Password</button>
+            </a>
+        </div>
+    </form>
+{% endblock %}

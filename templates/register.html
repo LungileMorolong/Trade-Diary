@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="mb-3">
+            <h1>Register</h1>
+            <br>
+            <p>Please enter username, password, confirmation password, email address, trade account balance, and answer the security question.</p>
+            <br>
+            <p>After registration, you will receive a welcome email.</p>
+            <br>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="password" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="confirm_password" name="confirmation" placeholder="Confirm Password" type="password">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="email" name="email" placeholder="Email Address" type="email">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="answer" name="answer" placeholder="First pet's name" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="account" name="account" placeholder="Trading Account Balance" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Regiser</button>
+    </form>
+{% endblock %}

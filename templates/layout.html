@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+
+        <!-- http://getbootstrap.com/docs/5.1/ -->
+        <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" rel="stylesheet">
+        <script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"></script>
+
+        <!-- Library for graphs-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+        <!-- https://iconfinder.com/icons/3238501/bussines_finance_growth_trading_icon -->
+        <link href="/static/icon.jpg" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <!-- Remix icon library-->
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet">
+
+        <!-- Google fonts-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+
+        <title>Trade Diary: {% block title %}{% endblock %}</title>
+
+        <!-- https://unsplash.com/s/photos/trading -->
+        <style>
+            body {
+                background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url("static/trading_back.jpg");
+                background-repeat: no-repeat;
+                background-attachment:fixed;
+                background-size:cover;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav>
+            <a href="/" class="logo"><i class="ri-stock-line"></i><span>TRADE DIARY</span></a>
+            {% if session["user_id"] %}
+            <div class="navbar">
+                <ul>
+                    <li><a href="/news">News</a></li>
+                    <li><a href="/diary">Diary</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            History
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/graph">History Graphs</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/history">History Table</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="main">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Accounts
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/username">Update Username</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/password">Update Password</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link" href="/logout">Log Out</a></li>
+            </div>
+            {% else %}
+            <div class="main">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
+            {% endif %}
+        </nav>
+        {% if get_flashed_messages() %}
+        <header>
+            <div class="alert alert-primary mb-0 text-center" role="alert">
+                {{ get_flashed_messages() | join(" ") }}
+            </div>
+        </header>
+        {% endif %}
+        <main class="container-fluid py-5 text-center">
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Username
+{% endblock %}
+
+{% block main %}
+    <form action="/username" method="post">
+        <div class="mb-3">
+            <h1>Update Username</h1>
+            <br>
+            <p>To update username, enter the current username, new username, and answer security question. If new username already exist, please try again.</p>
+            <p>Confirmation email will be sent after completing update.</p>
+            <br>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="ex_username" name="existusername" placeholder="Current Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="new_user" name="newuser" placeholder="New Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="answer" name="answer" placeholder="First pet's name" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+{% endblock %}

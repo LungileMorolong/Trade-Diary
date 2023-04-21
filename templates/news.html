@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    News
+{% endblock %}
+
+
+{% block main %}
+    <form action="/news">
+        <h1>Daily Business News</h1>
+        <br>
+        <br>
+        <ul>
+            {% for article in articles %}
+            <ul>
+                <p>{{ article.description }}</p>
+                <a href="{{ article.url }}" target="_blank" class="news">Read More</a>
+            </ul>
+            <hr>
+            {% endfor %}
+        </ul>
+    </form>
+{% endblock %}

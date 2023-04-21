@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Graphs
+{% endblock %}
+
+{% block main %}
+    <form action="/graph">
+        <h1>History Graph</h1>
+        <br>
+        <p>Line graph showing your account balance over time</p>
+        <br>
+        <canvas id="myChart" width="600" height="300"></canvas>
+        <script>
+
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var labels = {{ labels | tojson | safe }};
+            var values = {{ values | tojson | safe }};
+            var lineChart = new Chart (ctx, {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: "Account Balance Over Time",
+                            data: values,
+                              fill: false,
+                            borderColor: "rgb(75, 192, 0, 1)",
+                            lineTension: 0.1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                    y: {
+                        ticks: { color: 'green'}
+                    },
+                    x: {
+                        ticks: { color: 'red'}
+                    }
+                    }
+                }
+            });
+
+        </script>
+    </form>
+{% endblock %}

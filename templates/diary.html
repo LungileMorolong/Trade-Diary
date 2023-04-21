@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Diary
+{% endblock %}
+
+
+
+{% block main %}
+    <form action="/diary" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <h1>Trade Diary</h1>
+            <br>
+            <p>You can keep track of the Stock Name, Trade Open and Closing Price, How much you won/lose, which you made a Profit or Loss, Trade Image, and Finally your thoughts on the Trade and how to improve!!</p>
+            <br>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" name="name" placeholder="Name" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="firstprice" placeholder="Trade Opening Price" type="number">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="endprice" placeholder="Trade Closing Price" type="number">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="won-loss" placeholder="Trade win/loss" type="number">
+        </div>
+        <div class="mb-3">
+            <select name="pl">
+                <option value="profit">Profit</option>
+                <option value="loss">Loss</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <input type="file" name="file">
+        </div>
+        <div class="mb-3">
+            <textarea name="comments" id="comments" placeholder="Trade Comments"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

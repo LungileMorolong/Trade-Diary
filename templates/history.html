@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+<!-- NEED TO COMPLETE -->>
+{% block main %}
+    <h1>History Table</h1>
+    <br>
+    <p>Shows all your previous trade details. The specific trade image can be downloaded by selecting Trade Image hyperlink</p>
+    <br>
+    <table class="table table-bordered" action="/history">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Opening Price</th>
+                <th>Closing Price</th>
+                <th>Won/Loss</th>
+                <th>Profit/loss</th>
+                <th>Trade Comments</th>
+                <th>Trade Picture</th>
+                <th>Account Balance After Trade</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in user_data %}
+        <tr>
+            <td> {{ user["date"] }} </td>
+            <td> {{ user["name"] }} </td>
+            <td> {{ user["firstprice"] }} </td>
+            <td> {{ user["endprice"] }} </td>
+            <td> {{ user["win_loss"] }} </td>
+            <td> {{ user["profit_loss"] }} </td>
+            <td> {{ user["comments"] }} </td>
+            <td><a href="{{ url_for('view_image', image_id=user['id'], user_id=user['user_id']) }}" download>Trading Image</a></td>
+            <td> {{ user["balance"] }} </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
